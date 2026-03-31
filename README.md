@@ -12,6 +12,28 @@
 
 ## Теория
 
+### Подключение JS
+
+#### В конце `body`
+
+```
+    ...
+    <script src="index.js" ></script>
+</body>
+
+</html>
+```
+
+#### В `head`
+
+```html
+<head>
+    ...
+    <link rel="stylesheet" href="style.css" />
+    <script src="index.js" defer></script>
+</head>
+```
+
 ### Пример одного элемента
 
 ```html
@@ -22,8 +44,7 @@
             src="https://i.scdn.co/image/ab67616d000048516f51139efce47d2e01da8052"
             alt="плохохорошо"
             class="album-art"
-            loading="lazy"
-        />
+            loading="lazy" />
         <div class="track-info">
             <div class="track-name">плохохорошо</div>
             <div class="track-artists">iskrit, ioneweb</div>
@@ -58,7 +79,7 @@ _У вас уже она есть и называется по другому_
 ### Шаг 3: Написать функцию рендеринга
 
 ```javascript
-const container = document.querySelector("#container")
+const container = document.querySelector('#container')
 container.innerHTML = `
 <div class="card">
   <h2>${data.name}</h2>
@@ -75,8 +96,8 @@ _Здесь вы используете шаблон_
 
 ```javascript
 items.forEach((item) => {
-    const div = document.createElement("div")
-    div.className = "item"
+    const div = document.createElement('div')
+    div.className = 'item'
     div.innerHTML = `
   <h3>${item.title}</h3>
   <p>${item.description}</p>
@@ -99,9 +120,9 @@ const html = items
       <h3>${item.title}</h3>
       <p>${item.description}</p>
     </div>
-  `
+  `,
     )
-    .join("")
+    .join('')
 
 container.innerHTML = html
 ```
@@ -122,7 +143,7 @@ function renderProfile(user) {
       <div class="skills">
         ${user.skills
             .map((skill) => `<span class="tag">${skill}</span>`)
-            .join("")}
+            .join('')}
       </div>
     </div>
   `
@@ -135,9 +156,9 @@ function renderProfile(user) {
 function safeRender(data) {
     return `
     <div class="item">
-      <h3>${data.title || "Без названия"}</h3>
-      <p>${data.description || "Описание отсутствует"}</p>
-      ${data.image ? `<img src="${data.image}" alt="${data.title}">` : ""}
+      <h3>${data.title || 'Без названия'}</h3>
+      <p>${data.description || 'Описание отсутствует'}</p>
+      ${data.image ? `<img src="${data.image}" alt="${data.title}">` : ''}
     </div>
   `
 }
@@ -151,4 +172,3 @@ function safeRender(data) {
 - Когда документ будет готов - создайте пул реквест из ветки wip (вашей) на ветку main (тоже вашу) и укажите меня (ktkv419) как reviewer
 
 Не мержите сами коммит, это сделаю я после проверки задания
-
